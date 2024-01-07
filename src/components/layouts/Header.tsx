@@ -1,7 +1,7 @@
 
 export const Header = () => {
   return (
-    <div className="header">
+    <header className="header">
         <nav className="navbar">
             <div className="logo">
                 <img src="" alt="" />
@@ -12,6 +12,6 @@ export const Header = () => {
                 <li><a href="">Session</a></li>
             </ul>
         </nav>
-    </div>
+    </header>
   )
 }

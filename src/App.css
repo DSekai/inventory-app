@@ -1,7 +1,8 @@
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
+  min-width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
   text-align: center;
 }
 
@@ -11,44 +12,47 @@
 
 .layout {
   display: grid;
-  /* min-height: 100vh; */
-  min-width: 50rem;
+  min-height: 100vh;
+  grid-template-rows: 5rem auto 5rem;
   grid-template-areas: 
     "header header header"
-    "sidebar content content"
+    "content content content"
     "footer footer footer";
   
   .header {
     grid-area: header;
     background: red;
+    /* height: 60px; */
 
     .navbar {
       display: flex;
       justify-content: space-between;
 
+      height: 100%;
+      padding: 0 1rem;
+
       .logo {
         background: blue;
-        width: 25px;
+        width: 5rem;
       }
 
-      & ul {
+      > ul {
         display: flex;
+        place-items: center;
         justify-content: flex-end;
         list-style: none;
-        align-content: center;
-        margin-right: 1rem;
+        
         gap: 1rem;
+
+        & li >a {
+          color: white;
+        }
       }
     }
   }
 
-  .sidebar {
-    grid-area: sidebar;
-  }
-
   .content {
     grid-area: content;
-    /* min-height: 100vh; */
   }
 
   .footer {
