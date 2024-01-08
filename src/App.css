@@ -8,6 +8,7 @@
 
 *{
   -webkit-tap-highlight-color: rgba(0,0,0,0);
+  padding: 0;
 }
 
 .layout {
@@ -53,6 +54,8 @@
 
   .content {
     grid-area: content;
+
+    padding: 2rem;
   }
 
   .footer {
@@ -61,6 +64,29 @@
 }
 
 .menu {
-  display: flex;
-  flex: 1 0 30%;
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+
+  .CardMenu {
+    /* background: silver; */
+    border-radius: 15px;
+    border: 1px solid gainsboro;
+    box-shadow: 12px 13px 9px -3px rgba(0,0,0,0.1);
+
+    padding: 1rem;
+    transition: .2s;
+    
+    &:hover {
+      border-color: blueviolet;
+      cursor: pointer;
+    }
+    
+    >svg {
+      height: 45px;
+      width: 45px;
+    }
+
+  }
 }
