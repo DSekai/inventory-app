@@ -1,8 +1,9 @@
+import { CardMenu } from "../ui/CardMenu"
 
 export const Menu = () => {
   return (
-    <section>
-        
-    </section>
+    <menu className="menu">
+        <CardMenu/>
+    </menu>
   )
 }
