@@ -4,10 +4,7 @@ import { CardInventoryList } from '../../ui/menu/inventory/CardInventoryList';
 
 export const ListInventory = () => {
 
-  const inventorysList : Inventorys[] = inventory 
-  
-  console.log(inventorysList);
-  
+  const inventorysList : Inventorys[] = inventory   
 
   return (
     <div className='inventoryList'>
