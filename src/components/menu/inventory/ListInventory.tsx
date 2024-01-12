@@ -11,10 +11,10 @@ export const ListInventory = () => {
         <h2>Your Inventorys</h2>
       <div className="inventoryList">
         {
-          inventorysList.length !== 0 ? inventorysList.map(inventory => (
-            <CardInventoryList id={inventory.id} title={inventory.title} key={inventory.id}/>
+          inventorysList.length !== 0 && inventorysList.map(inventory => (
+            <CardInventoryList id={inventory.id} title={inventory.title} description={inventory.description} key={inventory.id}/>
           ))
-          : '' // !agregar skeleton
+           // !agregar skeleton
         }
       </div>
     </div>

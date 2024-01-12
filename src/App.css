@@ -9,6 +9,8 @@
 *{
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
 }
 
 .layout {
@@ -88,5 +90,34 @@
       width: 45px;
     }
 
+  }
+}
+
+.inventory {
+
+  .inventoryList {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    place-items: center;
+    gap: 1rem;
+    /* row-gap: 1rem; */
+
+    .cardInventoryList {
+      width: 100%;
+      min-width: 250px;
+      height: 280px;
+
+      border-radius: 15px;
+      border: 1px solid gainsboro;
+      box-shadow: 12px 13px 9px -3px rgba(0,0,0,0.1);
+  
+      padding: 1rem;
+      transition: .2s;
+      
+      &:hover {
+        border-color: blueviolet;
+        cursor: pointer;
+      }
+    }
   }
 }
