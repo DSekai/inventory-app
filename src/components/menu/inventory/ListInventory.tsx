@@ -5,8 +5,8 @@ export const ListInventory = () => {
     console.log(inventorys);
     
   return (
-    <div>
-
+    <div className='inventoryList'>
+      
     </div>
   )
 }
