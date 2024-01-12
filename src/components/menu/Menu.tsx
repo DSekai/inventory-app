@@ -1,4 +1,4 @@
-import { CardMenu } from "../ui/CardMenu"
+import { CardMenu } from "../ui/menu/CardMenu"
 
 export const Menu = () => {
   return (

@@ -1,4 +1,4 @@
-import { InventoryIcon } from "../../assets/img/icons"
+import { InventoryIcon } from "../../../assets/img/icons"
 
 export const CardMenu = () => {
   return (
