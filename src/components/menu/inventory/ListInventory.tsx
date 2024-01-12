@@ -16,7 +16,7 @@ export const ListInventory = () => {
               
           </div>
         ))
-        : ''
+        : '' // !agregar skeleton
       }
     </div>
   )
