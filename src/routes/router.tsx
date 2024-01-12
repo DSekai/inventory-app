@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom"
-import { Layout } from "../components/layouts/Layout"
 import { Menu } from "../components/menu/Menu"
+import { App } from "../App"
 
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: <Layout/>,
+        element: <App/>,
         children: [
             {
                 index: true,
