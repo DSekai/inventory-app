@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom"
 import { Menu } from "../components/menu/Menu"
 import { App } from "../App"
+import { ListInventory } from "../components/menu/inventory/ListInventory"
 
 export const router = createBrowserRouter([
     {
@@ -10,6 +11,10 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 element: <Menu/>
+            },
+            {
+                path: 'inventory',
+                element: <ListInventory/>
             },
             {
                 path: '*',
