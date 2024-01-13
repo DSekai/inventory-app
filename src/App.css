@@ -121,3 +121,55 @@
     }
   }
 }
+
+.optionButton {
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+
+  >svg {
+    &:hover {
+      stroke: blueviolet;
+    }
+  }
+
+  .dropDown {
+    display: none;
+    position: absolute;
+
+    background: white;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+
+    /* padding: .5rem; */
+
+    .options {
+      display: grid;
+      margin: .5rem;
+
+
+      >p {
+        margin: .2rem;
+        /* margin-bottom: 0; */
+        /* border-bottom: 1px solid rgb(221, 220, 220); */
+        color: #172B4D;
+        font-weight: 500;
+      }
+  
+      .edit {
+        
+      }
+  
+      .delete {
+        /* color: red; */
+      }
+    }
+    
+  }
+
+  &:hover {
+    .dropDown {
+      display: block;
+    }
+  }
+}
