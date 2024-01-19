@@ -167,9 +167,13 @@
     
   }
 
-  &:hover {
+  .active {
+    display: block;
+  }
+
+  /* &:hover {
     .dropDown {
       display: block;
     }
-  }
+  } */
 }
