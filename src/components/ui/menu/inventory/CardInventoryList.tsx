@@ -1,5 +1,5 @@
 import { Inventorys } from "../../../../types/types"
-import { ButtonOption } from "../../buttonOption"
+import { ButtonOption } from "../../ButtonOption"
 
 
 export const CardInventoryList = ({ id, title, description }: Inventorys) => {
