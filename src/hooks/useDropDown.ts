@@ -1,9 +1,4 @@
-import { Dispatch, RefObject, SetStateAction } from "react"
-
-interface DropDownProps {
-    ref: RefObject<HTMLDivElement>
-    setOpenOptions: Dispatch<SetStateAction<boolean>>
-}
+import { DropDownProps } from "../types/types"
 
 export const useDropDown = ({ref, setOpenOptions}: DropDownProps) => {
     //* useEffect with problems for rendering previus hooks
