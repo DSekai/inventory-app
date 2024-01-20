@@ -1,17 +1,18 @@
 import { Dispatch, RefObject, SetStateAction } from "react"
 
-// Inventorys
+//#region Inventorys
 
 export interface Inventorys {
     id: string
     title: string
     description?: string
 }
+//#endregion
 
-
-// Hooks
+//#region Hooks
 
 export interface DropDownProps {
     ref: RefObject<HTMLDivElement>
     setOpenOptions: Dispatch<SetStateAction<boolean>>
 }
+//#endregion
