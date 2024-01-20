@@ -2,6 +2,10 @@ import { createBrowserRouter } from "react-router-dom"
 import { Menu } from "../components/menu/Menu"
 import { App } from "../App"
 import { ListInventory } from "../components/menu/inventory/ListInventory"
+import { ViewInventory } from "../components/menu/inventory/ViewInventory"
+import { Inventory } from "../components/menu/inventory/Inventory"
+
+const id = '1'
 
 export const router = createBrowserRouter([
     {
@@ -14,7 +18,17 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/inventory',
-                element: <ListInventory/>
+                element: <Inventory/>,
+                children:[
+                    {
+                        index: true,
+                        element: <ListInventory/>
+                    },
+                    {
+                        path: `id=${id}`,
+                        element: <ViewInventory/>
+                    }
+                ]
             },
             {
                 path: '*',
