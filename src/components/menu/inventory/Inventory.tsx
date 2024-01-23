@@ -2,6 +2,8 @@ import { Outlet } from "react-router-dom"
 
 export const Inventory = () => {
   return (
-    <Outlet/>
+    <div className="inventory">
+      <Outlet/>
+    </div>
   )
 }
