@@ -7,7 +7,7 @@ export const ListInventory = () => {
   const inventorysList : Inventorys[] = inventory   
 
   return (
-    <div className='inventory'>
+    <>
         <h2>Your Inventorys</h2>
       <div className="inventoryList">
         {
@@ -17,6 +17,6 @@ export const ListInventory = () => {
            // !agregar skeleton
         }
       </div>
-    </div>
+    </>
   )
 }
