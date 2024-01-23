@@ -120,6 +120,33 @@
       }
     }
   }
+
+  .section-inventory {
+    display: grid;
+    grid-template-areas: 
+      "nav nav nav nav nav"
+      "location content content content content";
+
+    .inventory-options {
+      grid-area: nav;
+      display: flex;
+      background: red;
+      gap: .3rem;
+
+      button {
+        /* padding: ; */
+      }
+    }
+    .inventory-location {
+      grid-area: location;
+      background: blue;
+      height: 20px;
+    }
+    .inventory-items {
+      grid-area: content;
+      background: wheat;
+    }
+  }
 }
 
 .optionButton {
