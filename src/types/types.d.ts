@@ -1,4 +1,4 @@
-import { Dispatch, RefObject, SetStateAction } from "react"
+import { Dispatch, ReactNode, RefObject, SetStateAction } from "react"
 
 //#region Inventorys
 
@@ -9,10 +9,18 @@ export interface Inventorys {
 }
 //#endregion
 
+//#region UI
+
+export interface ButtonOptionType {
+    title?: string
+    options: string[]
+    image?: ReactNode
+}
+
 //#region Hooks
 
 export interface DropDownProps {
-    ref: RefObject<HTMLDivElement>
+    ref: RefObject<HTMLButtonElement>
     setOpenOptions: Dispatch<SetStateAction<boolean>>
 }
 //#endregion
