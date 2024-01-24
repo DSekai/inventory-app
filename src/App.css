@@ -100,9 +100,10 @@
     grid-template-columns: repeat(4, 1fr);
     place-items: center;
     gap: 1rem;
-    /* row-gap: 1rem; */
 
     .cardInventoryList {
+      display: flex;
+      flex-direction: column;
       width: 100%;
       min-width: 250px;
       height: 280px;
@@ -113,6 +114,23 @@
   
       padding: 1rem;
       transition: .2s;
+
+      position: relative;
+
+      header {
+        display: flex;
+        justify-content: flex-end;
+
+        position: absolute;
+        right: 1em;
+        
+        button {
+          background: transparent;
+
+          
+        }
+        
+      }
       
       &:hover {
         border-color: blueviolet;
@@ -129,12 +147,15 @@
 
     .inventory-options {
       grid-area: nav;
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
       background: red;
       gap: .3rem;
+      justify-content: space-between;
 
-      button {
-        /* padding: ; */
+      .options-buttons {
+        display: flex;
+        gap: .5rem;
       }
     }
     .inventory-location {
@@ -154,10 +175,13 @@
   position: relative;
   justify-content: flex-end;
 
-  >svg {
-    &:hover {
-      stroke: blueviolet;
-    }
+  .titleButton{
+    display: flex;
+    place-content: center;
+  }
+
+  >button {
+    background: transparent;
   }
 
   .dropDown {
@@ -167,28 +191,22 @@
     background: white;
     border: 1px solid gainsboro;
     border-radius: 10px;
-
-    /* padding: .5rem; */
+    top: 2em;
+    left: 0;
 
     .options {
       display: grid;
       margin: .5rem;
 
-
-      >p {
+      >a {
         margin: .2rem;
-        /* margin-bottom: 0; */
-        /* border-bottom: 1px solid rgb(221, 220, 220); */
         color: #172B4D;
         font-weight: 500;
-      }
-  
-      .edit {
-        
-      }
-  
-      .delete {
-        /* color: red; */
+
+        &:hover {
+          color: #535bf2;
+
+        }
       }
     }
     
@@ -197,10 +215,14 @@
   .active {
     display: block;
   }
+}
 
-  /* &:hover {
-    .dropDown {
-      display: block;
-    }
-  } */
+.actions-button {
+  display: flex;
+  justify-content: center;
+  button {
+    color: #888787;
+    background: #e8e8e9;
+  }
+  
 }
