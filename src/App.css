@@ -193,6 +193,7 @@
     border-radius: 10px;
     top: 2em;
     left: 0;
+    /* animation: slide-out-of-container 5s infinite; */
 
     .options {
       display: grid;
@@ -225,4 +226,10 @@
     background: #e8e8e9;
   }
   
+}
+
+@keyframes slide-out-of-container {
+  to {
+    translate: -100cqi;
+  }
 }
