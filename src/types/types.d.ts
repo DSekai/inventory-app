@@ -11,9 +11,13 @@ export interface Inventorys {
 
 //#region UI
 
+interface Option {
+    key: string
+}
+
 export interface ButtonOptionType {
     title?: string
-    options: string[]
+    options: Option[]
     image?: ReactNode
 }
 

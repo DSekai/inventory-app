@@ -2,13 +2,10 @@
 import { ConfurationIcon } from "../../../assets/img/icons"
 import { ButtonOptionInventory } from "../../ui/menu/inventory/ButtonOptionInventory"
 import { ButtonOption } from "../../ui/ButtonOption"
-import { useReactTable } from "@tanstack/react-table"
 import data from '../../../libs/MOCK_DATA.json'
-
+import { DropDownComponent } from "../../ui/DropDownComponent"
 
 export const ViewInventory = () => {
-
-  useReactTable({ data, columns })
 
   return (
     <section className="section-inventory">
@@ -17,30 +14,15 @@ export const ViewInventory = () => {
           <ButtonOptionInventory />
         </div>
         <div className="actions-button">
-          <ButtonOption title="Actions" options={['Delete']} image={<ConfurationIcon />} />
+          {/* <ButtonOption title="Actions" options={['Delete']} image={<ConfurationIcon />} /> */}
+          <DropDownComponent options={[{key:'Edit'},{key:'Delete'}]} title="Actions" image={<ConfurationIcon />}/>
         </div>
       </div>
       <div className="inventory-location">
-
+            <div className="bg-red-400">aaa</div>
       </div>
       <div className="inventory-items">
-        <table>
-          <thead>
-            <tr>
-
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-
-            </tr>
-          </tfoot>
-        </table>
+        {/* <DropDownComponent options={['1','2']} title="Actions"/> */}
       </div>
     </section>
   )

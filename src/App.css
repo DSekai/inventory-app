@@ -13,6 +13,10 @@
   text-decoration: none;
 }
 
+.darkTheme {
+  
+}
+
 .layout {
   display: grid;
   min-height: 100vh;
@@ -165,7 +169,7 @@
     }
     .inventory-items {
       grid-area: content;
-      background: wheat;
+      background: red;
     }
   }
 }
@@ -222,8 +226,8 @@
   display: flex;
   justify-content: center;
   button {
-    color: #888787;
-    background: #e8e8e9;
+    /* color: #888787;
+    background: #e8e8e9; */
   }
   
 }
