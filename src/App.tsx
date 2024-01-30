@@ -6,7 +6,7 @@ import { Layout } from './components/layouts/Layout'
 export const App = () => {
   useEffect(() => {
     const setBodyClass = (matches: boolean) => {
-      document.body.className = matches ? 'dark text-foreground bg-background' : 'light text-foreground bg-background';
+      document.body.className = matches ? 'light text-foreground bg-background' : 'dark text-foreground bg-background';
     }
 
     if (typeof window !== 'undefined') {

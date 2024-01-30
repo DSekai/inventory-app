@@ -8,11 +8,11 @@ import {
 import { ButtonOptionType } from "../../types/types";
 
 
-export const DropDownComponent = ({ title, options, image }: ButtonOptionType) => {
+export const DropDownComponent = ({ title, options, image, sizeButton='lg' }: ButtonOptionType) => {
     return (
         <Dropdown>
             <DropdownTrigger>
-                <Button size="lg" className="bg-white dark:bg-black"
+                <Button size={sizeButton} className="bg-white dark:bg-black"
                     variant="solid"
                 >
                     {image}

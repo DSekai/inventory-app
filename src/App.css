@@ -70,13 +70,23 @@
 }
 
 .menu {
-  display: grid;
+  /* display: grid; */
+  display: flex;
+  flex-wrap: wrap;
 
-  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-columns: repeat(4, 1fr); */
   gap: 1rem;
 
   .CardMenu {
-    /* background: silver; */
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    background: white;
+
+    min-width: 250px;
+    width: 320px;
+    height: 280px;
+
     border-radius: 15px;
     border: 1px solid gainsboro;
     box-shadow: 12px 13px 9px -3px rgba(0,0,0,0.1);
@@ -87,6 +97,10 @@
     &:hover {
       border-color: blueviolet;
       cursor: pointer;
+    }
+
+    p {
+      margin: 1.3rem;
     }
     
     >svg {
@@ -99,17 +113,32 @@
 
 .inventory {
 
+  >h2 {
+    margin-bottom: 1rem;
+    font-weight: bold;
+    font-size: x-large;
+  }
+
   .inventoryList {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    /* grid-template-columns: repeat(4, 1fr); */
     place-items: center;
     gap: 1rem;
+
+    >a {
+      z-index: 1;
+    }
 
     .cardInventoryList {
       display: flex;
       flex-direction: column;
+
+      place-content: center;
+
       width: 100%;
       min-width: 250px;
+      width: 320px;
       height: 280px;
 
       border-radius: 15px;
@@ -124,9 +153,12 @@
       header {
         display: flex;
         justify-content: flex-end;
+        z-index: 2;
+
 
         position: absolute;
         right: 1em;
+        top: 1em;
         
         button {
           background: transparent;
@@ -175,31 +207,33 @@
 }
 
 .optionButton {
-  display: flex;
+  /* display: flex; */
   position: relative;
   justify-content: flex-end;
 
-  .titleButton{
+  /* .titleButton{
     display: flex;
     place-content: center;
-  }
+  } */
 
   >button {
     background: transparent;
+    /* padding: 0; */
+    /* width: 25px; */
   }
 
   .dropDown {
-    display: none;
+    /* display: none;
     position: absolute;
 
     background: white;
     border: 1px solid gainsboro;
     border-radius: 10px;
     top: 2em;
-    left: 0;
+    left: 0; */
     /* animation: slide-out-of-container 5s infinite; */
 
-    .options {
+    /* .options {
       display: grid;
       margin: .5rem;
 
@@ -213,13 +247,13 @@
 
         }
       }
-    }
+    } */
     
   }
 
-  .active {
+  /* .active {
     display: block;
-  }
+  } */
 }
 
 .actions-button {
