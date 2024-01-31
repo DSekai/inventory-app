@@ -70,11 +70,11 @@
 }
 
 .menu {
-  /* display: grid; */
   display: flex;
+  /* display: grid; */
   flex-wrap: wrap;
 
-  /* grid-template-columns: repeat(4, 1fr); */
+  /* grid-template-columns: repeat(5, 1fr); */
   gap: 1rem;
 
   .CardMenu {
@@ -123,11 +123,11 @@
     display: flex;
     flex-wrap: wrap;
     /* grid-template-columns: repeat(4, 1fr); */
-    place-items: center;
+    place-content: center;
     gap: 1rem;
 
     >a {
-      z-index: 1;
+      /* z-index: 0; */
     }
 
     .cardInventoryList {
@@ -147,14 +147,13 @@
   
       padding: 1rem;
       transition: .2s;
-
       position: relative;
+
 
       header {
         display: flex;
         justify-content: flex-end;
-        z-index: 2;
-
+        /* z-index: 1; */
 
         position: absolute;
         right: 1em;

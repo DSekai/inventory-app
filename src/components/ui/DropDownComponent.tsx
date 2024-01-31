@@ -9,11 +9,18 @@ import { ButtonOptionType } from "../../types/types";
 
 
 export const DropDownComponent = ({ title, options, image, sizeButton='lg' }: ButtonOptionType) => {
+    const handleClick = (e: React.MouseEvent) => {
+        e.stopPropagation(); // Detén la propagación solo para el DropDownComponent 
+        e.preventDefault()
+    }
     return (
-        <Dropdown>
+        <Dropdown  
+        classNames={{
+          content: "min-w-[100px] bg-stone-100"
+        }}>
             <DropdownTrigger>
                 <Button size={sizeButton} className="bg-white dark:bg-black"
-                    variant="solid"
+                    variant="solid" onClick={handleClick}
                 >
                     {image}
                     {title}
@@ -23,7 +30,7 @@ export const DropDownComponent = ({ title, options, image, sizeButton='lg' }: Bu
                 {
 
                     (item) => (
-                        <DropdownItem 
+                        <DropdownItem
                             key={item.key}
                             color={item.key === 'Delete' ? 'danger' : 'default'}
                             className={item.key === 'Delete' ? 'text-danger' : ''}>{item.key}</DropdownItem>
