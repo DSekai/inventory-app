@@ -22,6 +22,7 @@ export interface ButtonOptionType {
     options: Option[]
     image?: ReactNode
     sizeButton?: ButtonSize
+    data?: ProductType[]
 }
 
 //#endregion
