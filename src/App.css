@@ -179,13 +179,15 @@
     grid-template-areas: 
       "nav nav nav nav nav"
       "location content content content content";
-
+    grid-template-columns: 30% 70%;
+    
     .inventory-options {
       grid-area: nav;
       display: grid;
       grid-template-columns: repeat(3,1fr);
       background: red;
       gap: .3rem;
+      padding: 0.3rem;
       justify-content: space-between;
 
       .options-buttons {
@@ -201,6 +203,7 @@
     .inventory-items {
       grid-area: content;
       background: red;
+      overflow-x: auto;
     }
   }
 }
