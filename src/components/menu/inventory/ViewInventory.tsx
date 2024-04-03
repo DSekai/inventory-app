@@ -1,13 +1,45 @@
 // import { useRef, useState } from "react"
 import { ConfurationIcon } from "../../../assets/img/icons"
 import { ButtonOptionInventory } from "../../ui/menu/inventory/ButtonOptionInventory"
-import { ButtonOption } from "../../ui/ButtonOption"
-import data from '../../../libs/inventory.json'
+// import { ButtonOption } from "../../ui/ButtonOption"
 import { DropDownComponent } from "../../ui/DropDownComponent"
 import { Table } from "../../ui/Table"
-import { product } from "../../../const"
+import { productsColumn, inventorysColumn } from "../../../const.tsx"
+import { useProducts } from "../../../hooks/useProducts"
+// import { useInventory } from "../../../hooks/useInventorys"
 
 export const ViewInventory = () => {
+
+  const {products} = useProducts()  
+  // const {inventory} = useInventory()
+
+  const customStyles = {
+    headRow: {
+      style: {
+        border: 'none',
+      },
+    },
+    headCells: {
+      style: {
+        color: '#202124',
+        fontSize: '14px',
+      },
+    },
+    rows: {
+      highlightOnHoverStyle: {
+        backgroundColor: 'rgb(225, 244, 244)',
+        borderBottomColor: '#FFFFFF',
+        borderRadius: '25px',
+        outline: '1px solid #FFFFFF',
+      },
+    },
+    pagination: {
+      style: {
+        border: 'none',
+      },
+    },
+  };
+  
 
   return (
     <section className="section-inventory">
@@ -21,11 +53,11 @@ export const ViewInventory = () => {
         </div>
       </div>
       <div className="inventory-location">
-            <div className=""></div>
+        {/* <Table type="Inventory" columns={inventorysColumn} data={inventory} title={' '} ></Table> */}
       </div>
       <div className="inventory-items">
         {/* <DropDownComponent options={['1','2']} title="Actions"/> */}
-          <Table columns={product} data={data} title='Products' ></Table>
+          <Table customStyles={customStyles} highlightOnHover pointerOnHover type="Product" columns={productsColumn} data={products} pagination paginationPerPage={10} selectableRows title={' '}></Table>
       </div>
     </section>
   )
