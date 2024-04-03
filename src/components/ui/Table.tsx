@@ -2,15 +2,30 @@ import { useState } from "react";
 import DataTable, { TableProps } from "react-data-table-component";
 import { DropDownComponent } from "./DropDownComponent";
 import { ConfurationIcon }  from "../../assets/img/icons"
-import { InventoryType } from "../../types/types";
+import { TableType } from "../../types/types";
+// import { ProductType } from "../../types/types";
 
-export const Table = <T extends InventoryType>(props: TableProps<T>) => {
+interface Props<T> extends TableProps<T> {
+  type: TableType
+}
 
-  const [selectedRows, setSelectedRows] = useState<InventoryType[] | [] >([]);
+export const Table = <T,>({type, ...props}: Props<T>) => {
+
+  const [selectedRows, setSelectedRows] = useState<T[] | []>([]);
+
+
+  const optionsMap = {
+    'Product': [{key:'Edit'}, {key:'Delete'}, {key: 'View'}],
+    'Inventory': [{key:'Edit'}, {key:'Delete'}],
+    'default': []
+  };
+  
+  const option = optionsMap[type] || optionsMap['default'];
+  
 
   const contextActions = (
 
-    <DropDownComponent data={selectedRows} options={[{key:'Edit'},{key:'Delete'}, {key: 'View'}]} title="Actions" image={<ConfurationIcon />}/>
+    <DropDownComponent data={selectedRows} options={option} title="Actions" image={<ConfurationIcon />}/>
 
   )
 
@@ -21,7 +36,7 @@ export const Table = <T extends InventoryType>(props: TableProps<T>) => {
 
   return (
     <>
-      <DataTable {...props} selectableRows onSelectedRowsChange={handleChange} contextActions={contextActions} />
+      <DataTable {...props}  onSelectedRowsChange={handleChange} contextActions={contextActions} />
     </>
   )
 }
