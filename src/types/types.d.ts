@@ -17,12 +17,18 @@ interface Option {
 
 type ButtonSize = 'lg' | 'sm' | 'md' 
 
-export interface ButtonOptionType {
+export interface ButtonOptionType <T>{
     title?: string
     options: Option[]
     image?: ReactNode
     sizeButton?: ButtonSize
-    data?: ProductType[]
+    data?: T[]
+}
+
+type TableType = 'Product' | 'Inventory'
+
+export interface TablePropsType {
+    tableType: TableType
 }
 
 //#endregion
@@ -42,5 +48,35 @@ export interface InventoryType {
     description?: string;
 }
 
+export interface ProductType {
+    product_id:      string;
+    product_name:    string;
+    price:           number;
+    quantity:        number;
+    expiration_date: string;
+    category:        CategoryType['category'];
+    location:        LocationType['location'];
+}
 
+export interface LocationType {
+    location_id: string
+    location: string
+}
+
+export interface CategoryType {
+    category_id: string
+    category: string
+}
 //#endregion
+
+export interface LoginType {
+    email: string
+    password: string
+}
+
+export interface UserType {
+    id: string
+    first_name: string
+    last_name: string
+    email: string
+}
