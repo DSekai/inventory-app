@@ -36,29 +36,7 @@ export interface DropDownProps {
 //#endregion
 
 //#region MOCK-DATA
-
-// export interface ProductType {
-//     id:         number;
-//     first_name: string;
-//     last_name:  string;
-//     email:      string;
-//     gender:     Gender;
-//     ip_address: string;
-// }
-
-// enum Gender {
-//     Agender = "Agender",
-//     Bigender = "Bigender",
-//     Female = "Female",
-//     Genderfluid = "Genderfluid",
-//     Genderqueer = "Genderqueer",
-//     Male = "Male",
-//     NonBinary = "Non-binary",
-//     Polygender = "Polygender",
-// }
-
-
-export interface ProductType {
+export interface InventoryType {
     title:        string;
     id:           string;
     description?: string;

@@ -2,11 +2,11 @@ import { useState } from "react";
 import DataTable, { TableProps } from "react-data-table-component";
 import { DropDownComponent } from "./DropDownComponent";
 import { ConfurationIcon }  from "../../assets/img/icons"
-import { ProductType } from "../../types/types";
+import { InventoryType } from "../../types/types";
 
-export const Table = <T extends ProductType>(props: TableProps<T>) => {
+export const Table = <T extends InventoryType>(props: TableProps<T>) => {
 
-  const [selectedRows, setSelectedRows] = useState<ProductType[] | [] >([]);
+  const [selectedRows, setSelectedRows] = useState<InventoryType[] | [] >([]);
 
   const contextActions = (
 

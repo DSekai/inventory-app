@@ -1,7 +1,7 @@
 import { TableColumn } from "react-data-table-component";
-import { ProductType } from "./types/types";
+import { InventoryType } from "./types/types";
 
-export const product: TableColumn<ProductType>[] = [
+export const product: TableColumn<InventoryType>[] = [
     {
         name: 'ID',
         selector: row => row.id,
