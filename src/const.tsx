@@ -48,7 +48,7 @@ export const productsColumn: TableColumn<ProductType>[] = [
         sortable: true
     },
     {
-        cell: row => <DropDownComponent data={row} options={[{ key: 'View' }, { key: 'Delete' }]} image={<OptionsIcon />} sizeButton="md" />,
+        cell: row => <DropDownComponent data={[row]} image={<OptionsIcon />} options={[{ key: 'View' }, { key: 'Delete' }]} sizeButton="md" />,
         // allowOverflow: true,
         // button: true,
         // width: '50px'

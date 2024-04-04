@@ -23,20 +23,20 @@ export const Table = <T,>({type, ...props}: Props<T>) => {
   const option = optionsMap[type] || optionsMap['default'];
   
 
-  const contextActions = (
-
-    <DropDownComponent data={selectedRows} options={option} title="Actions" image={<ConfurationIcon />}/>
-
-  )
-
+  
   const handleChange = (selected: { allSelected: boolean; selectedCount: number; selectedRows: T[] }) => {
     setSelectedRows(selected.selectedRows)
   }
   
+  const contextActions = (
+
+    <DropDownComponent data={selectedRows} image={<ConfurationIcon />} options={option} title="Actions"/>
+
+  )
 
   return (
     <>
-      <DataTable {...props}  onSelectedRowsChange={handleChange} contextActions={contextActions} />
+      <DataTable {...props}  contextActions={contextActions} onSelectedRowsChange={handleChange} />
     </>
   )
 }

@@ -4,19 +4,19 @@ import { CardInventoryList } from '../../ui/menu/inventory/CardInventoryList';
 
 export const ListInventory = () => {
 
-  const inventorysList : Inventorys[] = inventory   
+	const inventorysList: Inventorys[] = inventory
 
-  return (
-    <>
-        <h2>Your Inventorys</h2>
-      <div className="inventoryList">
-        {
-          inventorysList.length !== 0 && inventorysList.map(inventory => (
-            <CardInventoryList id={inventory.id} title={inventory.title} description={inventory.description} key={inventory.id}/>
-          ))
-           // !agregar skeleton
-        }
-      </div>
-    </>
-  )
+	return (
+  <>
+    <h2>Your Inventorys</h2>
+    <div className="inventoryList">
+      {
+					inventorysList.length !== 0 && inventorysList.map(inventory => (
+  <CardInventoryList description={inventory.description} id={inventory.id} key={inventory.id} title={inventory.title} />
+					))
+					// !agregar skeleton
+				}
+    </div>
+  </>
+	)
 }

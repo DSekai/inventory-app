@@ -13,10 +13,6 @@
   text-decoration: none;
 }
 
-.darkTheme {
-  
-}
-
 .layout {
   display: grid;
   min-height: 100vh;
@@ -61,7 +57,7 @@
   .content {
     grid-area: content;
 
-    padding: 2rem;
+    /* padding: 2rem; */
   }
 
   .footer {
@@ -73,6 +69,7 @@
   display: flex;
   /* display: grid; */
   flex-wrap: wrap;
+  padding: 2rem;
 
   /* grid-template-columns: repeat(5, 1fr); */
   gap: 1rem;
@@ -112,6 +109,7 @@
 }
 
 .inventory {
+  padding: 2rem;
 
   >h2 {
     margin-bottom: 1rem;
@@ -176,13 +174,16 @@
 
   .section-inventory {
     display: grid;
-    grid-template-areas: 
+    /* grid-template-areas: 
       "nav nav nav nav nav"
-      "content content content content content";
-    grid-template-columns: 30% 70%;
+      "content content content content content"; */
+    /* grid-template-columns: 30% 70%; */
     
+    /* display: flex;
+    flex-direction: column; */
+
     .inventory-options {
-      grid-area: nav;
+      /* grid-area: nav; */
       display: grid;
       grid-template-columns: repeat(3,1fr);
       background: red;
@@ -196,14 +197,14 @@
       }
     }
     .inventory-location {
-      grid-area: location;
+      /* grid-area: location; */
       background: blue;
       height: 20px;
     }
     .inventory-items {
-      grid-area: content;
+      /* grid-area: content; */
       background: red;
-      overflow-x: auto;
+      overflow-x: scroll;
     }
   }
 }
@@ -266,6 +267,54 @@
     background: #e8e8e9; */
   }
   
+}
+
+.algo {
+  display: flex;
+  place-content: center;
+}
+
+.formEdition {
+  /* width: 45rem; */
+  /* max-width: 45rem; */
+  background: gainsboro;
+  /* height: 100px; */
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 15px;
+  border: 1px solid gainsboro;
+  box-shadow: 12px 13px 9px -3px rgba(0,0,0,0.1);
+  
+  div {
+    margin: .5rem;
+  }
+
+  input {
+    border-radius: 5px;
+    /* margin-left: 5px; */
+  }
+
+  .formfooter {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    /* bottom: 0px; */
+  }
+}
+
+.formContent {
+  display: grid;
+  /* flex-wrap: wrap; */
+  /* gap: 1rem; */
+  /* place-content: center; */
+  & div {
+    display: flex;
+    place-content: center;
+    /* gap: 1rem; */
+    /* margin-bottom: 1rem; */
+    /* justify-content: space-between; */
+  }
 }
 
 @keyframes slide-out-of-container {

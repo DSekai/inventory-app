@@ -1,52 +1,72 @@
 import {
-    Dropdown,
-    DropdownTrigger,
-    DropdownMenu,
-    DropdownItem,
-    Button
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+  Button,
+  useDisclosure
 } from "@nextui-org/react";
 import { ButtonOptionType } from "../../types/types";
-import { Key } from "react";
+import { Key, useState } from "react";
+import { ModalProduct } from "./modals/ModalProduct";
 
+export const DropDownComponent = ({ title, options, image, sizeButton = 'lg', data=[] }: ButtonOptionType) => {
 
-export const DropDownComponent = ({ title, options, image, sizeButton='lg', data }: ButtonOptionType) => {
-    const handleClick = (e: React.MouseEvent) => {
-        e.stopPropagation(); // Detén la propagación solo para el DropDownComponent 
-        e.preventDefault()
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [test, setTest] = useState(false)
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Detén la propagación solo para el DropDownComponent 
+    e.preventDefault()
+  }
+  console.log(data);
+  
+
+  const handleActions = (key: Key) => {
+    key === 'Delete' || key === 'Edit' ? window.confirm(`Are you sure you want to ${key}`) : key === 'View' ? console.log(data)
+      : ''
+
+    if (key === 'View') {
+      setTest(!test)
+      onOpen()
     }
 
-    const handleActions = (key: Key) => {
-        key === 'Delete' || key === 'Edit' ? window.confirm(`Are you sure you want to ${key}`) : key === 'View' ? console.log(data)
-         : ''
-        
-    }
+  }
 
-    return (
-        <Dropdown  
+  return (
+    <>
+      <Dropdown
         classNames={{
           content: "min-w-[100px] bg-stone-100"
-        }}>
-            <DropdownTrigger>
-                <Button size={sizeButton} className="bg-white dark:bg-black"
-                    variant="solid" onClick={handleClick}
-                >
-                    {image}
-                    {title}
-                </Button>
-            </DropdownTrigger>
-            <DropdownMenu aria-label="Dynamic Actions" items={options} onAction={(key) => handleActions(key)}>
-                {
+        }}
+      >
+        <DropdownTrigger>
+          <Button className="bg-white dark:bg-black" onClick={handleClick}
+            size={sizeButton} variant="solid"
+          >
+            {image}
+            {title}
+          </Button>
+        </DropdownTrigger>
+        <DropdownMenu aria-label="Dynamic Actions" items={options} onAction={(data) => handleActions(data)}>
+          {
 
-                    (item) => (
-                        <DropdownItem
-                            key={item.key}
-                            color={item.key === 'Delete' ? 'danger' : 'default'}
-                            className={item.key === 'Delete' ? 'text-danger' : ''}
-                            >{item.key}</DropdownItem>
-                    )
-                }
+            (item) => (
+              <DropdownItem
+                className={item.key === 'Delete' ? 'text-danger' : ''}
+                color={item.key === 'Delete' ? 'danger' : 'default'}
+                key={item.key}
+              >{item.key}</DropdownItem>
+            )
+          }
 
-            </DropdownMenu>
-        </Dropdown>
-    )
+        </DropdownMenu>
+      </Dropdown>
+      {
+        test && (
+          <ModalProduct data={data} isOpen={isOpen} onClose={onClose}/>
+        )
+      }
+    </>
+  )
 }

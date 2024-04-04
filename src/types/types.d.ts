@@ -17,12 +17,12 @@ interface Option {
 
 type ButtonSize = 'lg' | 'sm' | 'md' 
 
-export interface ButtonOptionType <T>{
+export interface ButtonOptionType {
     title?: string
     options: Option[]
     image?: ReactNode
     sizeButton?: ButtonSize
-    data?: T[]
+    data: ProductType[]
 }
 
 type TableType = 'Product' | 'Inventory'
