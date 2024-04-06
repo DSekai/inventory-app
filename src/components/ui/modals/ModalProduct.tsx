@@ -1,12 +1,6 @@
+import { useBoundStore } from '../../../store/bound.store'
 import { Modal } from './Modal'
-import { ProductType } from '../../../types/types'
 import { Input } from '@nextui-org/react'
-
-interface Props {
-  isOpen: boolean
-  onClose: () => void
-  data: ProductType[]
-}
 
 const custom = {
   
@@ -19,35 +13,24 @@ const custom = {
   
 }
 
-export const ModalProduct = ({isOpen, onClose, data}: Props) => {
-  console.log(data);
-  
-  const item = data[0]
+export const ModalProduct = () => {
 
-  console.log(item);
-  
+  const data = useBoundStore(state => state.data)
+  const isOpen = useBoundStore(state => state.isOpen)
+  const onClose = useBoundStore(state => state.onClose)
 
-  // const input = typeof data.price
+
+  const dateFormated = data?.expiration_date.split(/[-/]/).reverse().join("-")
+  
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <div className="formContent">
-        {
-            // test.map((item, index) => (
-            //   <div key={index}>
-            //     <div className="mb-[1rem] w-full">
-            //       <Input classNames={custom} label={item.data} size="sm" type={item.input} variant="bordered"/>
-            //     </div>
-            //   </div>
-            // ))
-        }
-        <Input classNames={custom} label={'Name'} size="sm" type={'text'} value={item.product_name} variant="bordered"/>
-        {/* <Input classNames={custom} label={'Price'} size="sm" type='number' value={data.price} variant="bordered"/> */}
-        <Input classNames={custom} label={'Name'} size="sm" type={'text'} variant="bordered"/>
-        <Input classNames={custom} label={'Name'} size="sm" type={'text'} variant="bordered"/>
-        <Input classNames={custom} label={'Name'} size="sm" type={'text'} variant="bordered"/>
-        <Input classNames={custom} label={'Name'} size="sm" type={'text'} variant="bordered"/>
-
-          
+        <Input classNames={custom} defaultValue={data?.product_name} label={'Name'} size="sm"  type={'text'} variant="bordered"/>
+        <Input classNames={custom} defaultValue={data?.price.toString()} label={'Price'} size="sm" type='number' variant="bordered"/>
+        <Input classNames={custom} defaultValue={data?.quantity.toString()} label={'Quantity'} size="sm" type={'text'} variant="bordered"/>
+        <Input classNames={custom} defaultValue={dateFormated} label={'Expire Date'} size="sm" type={'date'} variant="bordered"/>
+        <Input classNames={custom} defaultValue={'VER SI SE PUEDE PONER UNDROPDOWN'} label={'Name'} size="sm" type={'text'} variant="bordered"/>
+        <Input classNames={custom} defaultValue={data?.location} label={'Name'} size="sm" type={'text'} variant="bordered"/>
       </div>
     </Modal>
   )
