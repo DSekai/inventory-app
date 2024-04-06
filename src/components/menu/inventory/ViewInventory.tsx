@@ -6,42 +6,44 @@ import { DropDownComponent } from "../../ui/DropDownComponent"
 import { Table } from "../../ui/Table"
 import { productsColumn } from "../../../const.tsx"
 import { useProducts } from "../../../hooks/useProducts"
+import { ModalProduct } from "../../ui/modals/ModalProduct.tsx"
 // import { useInventory } from "../../../hooks/useInventorys"
 
 export const ViewInventory = () => {
 
-    const { products } = useProducts()
-    // const {inventory} = useInventory()
+  const { products } = useProducts()
+  // const {inventory} = useInventory()
 
-    const customStyles = {
-        headRow: {
-            style: {
-                border: 'none',
-            },
-        },
-        headCells: {
-            style: {
-                color: '#202124',
-                fontSize: '14px',
-            },
-        },
-        rows: {
-            highlightOnHoverStyle: {
-                backgroundColor: 'rgb(225, 244, 244)',
-                borderBottomColor: '#FFFFFF',
-                borderRadius: '25px',
-                outline: '1px solid #FFFFFF',
-            },
-        },
-        pagination: {
-            style: {
-                border: 'none',
-            },
-        },
-    };
+  const customStyles = {
+    headRow: {
+      style: {
+        border: 'none',
+      },
+    },
+    headCells: {
+      style: {
+        color: '#202124',
+        fontSize: '14px',
+      },
+    },
+    rows: {
+      highlightOnHoverStyle: {
+        backgroundColor: 'rgb(225, 244, 244)',
+        borderBottomColor: '#FFFFFF',
+        borderRadius: '25px',
+        outline: '1px solid #FFFFFF',
+      },
+    },
+    pagination: {
+      style: {
+        border: 'none',
+      },
+    },
+  };
 
 
-    return (
+  return (
+    <>
       <section className="section-inventory">
         <div className="inventory-options">
           <div className="options-buttons">
@@ -59,5 +61,10 @@ export const ViewInventory = () => {
           <Table columns={productsColumn} customStyles={customStyles} data={products} highlightOnHover pagination paginationPerPage={10} pointerOnHover selectableRows title={' '} type="Product"></Table>
         </div>
       </section>
-    )
+      {
+        <ModalProduct/>
+      }
+
+    </>
+  )
 }
