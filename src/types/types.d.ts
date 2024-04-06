@@ -22,7 +22,7 @@ export interface ButtonOptionType {
     options: Option[]
     image?: ReactNode
     sizeButton?: ButtonSize
-    data: ProductType[]
+    data: ProductType | null
 }
 
 type TableType = 'Product' | 'Inventory'
@@ -80,3 +80,18 @@ export interface UserType {
     last_name: string
     email: string
 }
+
+//#region Modal
+
+type ModalProductType = ProductType | null
+
+export interface ModalType {
+    isOpen: boolean
+    onOpen: () => void
+    onClose: () => void
+
+    data: ModalProductType
+    setData: (data: ModalProductType) => void
+  }
+
+//#endregion
