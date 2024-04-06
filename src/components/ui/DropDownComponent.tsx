@@ -4,33 +4,42 @@ import {
   DropdownMenu,
   DropdownItem,
   Button,
-  useDisclosure
 } from "@nextui-org/react";
 import { ButtonOptionType } from "../../types/types";
-import { Key, useState } from "react";
-import { ModalProduct } from "./modals/ModalProduct";
+import { Key } from "react";
+import { useBoundStore } from "../../store/bound.store";
+// import { ModalProduct } from "./modals/ModalProduct";
 
-export const DropDownComponent = ({ title, options, image, sizeButton = 'lg', data=[] }: ButtonOptionType) => {
+export const DropDownComponent = ({ title, options, image, sizeButton = 'lg', data }: ButtonOptionType) => {
+  const modalOpen = useBoundStore(state => state.onOpen)
+  const dataModal = useBoundStore(state => state.setData)
 
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [test, setTest] = useState(false)
+  // const { isOpen, onOpen, onClose } = useDisclosure();
+  // const [test, setTest] = useState(false)
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation(); // Detén la propagación solo para el DropDownComponent 
     e.preventDefault()
   }
-  console.log(data);
+  // console.log(data);
   
-
+  
   const handleActions = (key: Key) => {
-    key === 'Delete' || key === 'Edit' ? window.confirm(`Are you sure you want to ${key}`) : key === 'View' ? console.log(data)
-      : ''
 
-    if (key === 'View') {
-      setTest(!test)
-      onOpen()
+    switch (key) {
+      case 'View':
+        dataModal(data)
+        modalOpen()
+        break;
+      case 'Delete':
+        window.confirm(`Are you sure you want to ${key}`)
+        break
+      case 'Edit':
+        window.confirm(`Are you sure you want to ${key}`)
+        break
+      default:
+        break;
     }
-
   }
 
   return (
@@ -63,9 +72,9 @@ export const DropDownComponent = ({ title, options, image, sizeButton = 'lg', da
         </DropdownMenu>
       </Dropdown>
       {
-        test && (
-          <ModalProduct data={data} isOpen={isOpen} onClose={onClose}/>
-        )
+        // isOpen && (
+        //   <ModalProduct data={data} isOpen={isOpen} onClose={onClose}/>
+        // )
       }
     </>
   )
