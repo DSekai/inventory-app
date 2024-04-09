@@ -1,7 +1,7 @@
 import inventory from '../../../libs/inventory.json'
 import { Inventorys } from '../../../types/types';
 import { CardInventoryList } from '../../ui/menu/inventory/CardInventoryList';
-import { CardSkeleton } from '../../ui/skeletons';
+import { CardSkeleton } from '../../ui/Skeletons';
 
 export const ListInventory = () => {
 
