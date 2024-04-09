@@ -1,50 +1,29 @@
-import { Modal as ModalUI, ModalContent, ModalHeader, ModalBody, ModalFooter, Button } from "@nextui-org/react";
+import { Modal as ModalUI, ModalContent, ModalHeader, ModalBody, ModalFooter, ModalProps } from "@nextui-org/react";
 
-interface Props {
-  isOpen: boolean
-  onClose: () => void
-  size?: sizes
+interface Props extends ModalProps{
   children: JSX.Element
+  childrenFooter: JSX.Element
+  title: string
 }
 
-type sizes = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "full";
-
-export const Modal = ({ isOpen, onClose, size = 'xs', children }: Props) => {
-
-  // const test = [
-  //   {
-  //     data: 'Product Name',
-  //     input: 'text'
-  //   },
-  //   {
-  //     data: 'Product Name',
-  //     input: 'number'
-  //   },
-  // ]
+export const Modal = ({ children, childrenFooter, title, ...props}: Props) => {
 
   return (
     <ModalUI
-      isOpen={isOpen}
-      onClose={onClose}
-      size={size}
+      {...props}
     >
       <ModalContent>
-        {(onClose) => (
+        {
           <>
-            <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
+            <ModalHeader className="flex flex-col gap-1">{title}</ModalHeader>
             <ModalBody>
               {children}
             </ModalBody>
             <ModalFooter>
-              <Button color="danger" onPress={onClose} variant="light">
-                Close
-              </Button>
-              <Button color="primary" onPress={onClose}>
-                Action
-              </Button>
+              {childrenFooter}
             </ModalFooter>
           </>
-        )}
+        }
       </ModalContent>
     </ModalUI>
   )
