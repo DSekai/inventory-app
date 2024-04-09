@@ -1,36 +1,29 @@
 import { useState } from "react";
 import DataTable, { TableProps } from "react-data-table-component";
-import { DropDownComponent } from "./DropDownComponent";
-import { ConfurationIcon }  from "../../assets/img/icons"
-import { TableType } from "../../types/types";
-// import { ProductType } from "../../types/types";
+import { Button } from "@nextui-org/react";
 
 interface Props<T> extends TableProps<T> {
-  type: TableType
+  onDelete: (data:T[]) => Promise<void>
 }
 
-export const Table = <T,>({type, ...props}: Props<T>) => {
+export const Table = <T,>({ onDelete,...props}: Props<T>) => {
 
   const [selectedRows, setSelectedRows] = useState<T[] | []>([]);
-
-
-  const optionsMap = {
-    'Product': [{key:'Edit'}, {key:'Delete'}, {key: 'View'}],
-    'Inventory': [{key:'Edit'}, {key:'Delete'}],
-    'default': []
-  };
-  
-  const option = optionsMap[type] || optionsMap['default'];
-  
-
   
   const handleChange = (selected: { allSelected: boolean; selectedCount: number; selectedRows: T[] }) => {
     setSelectedRows(selected.selectedRows)
   }
+
+  const handleDelete = () => {
+    onDelete(selectedRows).then(data => window.alert(data))
+              .catch(() => console.error('error a cambiar'))
+    
+  }
   
   const contextActions = (
 
-    <DropDownComponent data={selectedRows} image={<ConfurationIcon />} options={option} title="Actions"/>
+    // <DropDownComponent data={selectedRows} image={<ConfurationIcon />} options={option} title="Actions"/>
+    <Button color="danger" onClick={handleDelete} size="lg">Delete</Button>
 
   )
 
