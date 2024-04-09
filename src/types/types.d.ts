@@ -84,11 +84,14 @@ export interface UserType {
 //#region Modal
 
 type ModalProductType = ProductType | null
+type Modals = 'Product' | 'Login' | null
 
 export interface ModalType {
     isOpen: boolean
+    type: Modals
     onOpen: () => void
     onClose: () => void
+    setType: (modals:Modals) => void
 
     data: ModalProductType
     setData: (data: ModalProductType) => void
