@@ -13,6 +13,7 @@ import { useBoundStore } from "../../store/bound.store";
 export const DropDownComponent = ({ title, options, image, sizeButton = 'lg', data }: ButtonOptionType) => {
   const modalOpen = useBoundStore(state => state.onOpen)
   const dataModal = useBoundStore(state => state.setData)
+  const setType = useBoundStore(state => state.setType)
 
   // const { isOpen, onOpen, onClose } = useDisclosure();
   // const [test, setTest] = useState(false)
@@ -28,6 +29,7 @@ export const DropDownComponent = ({ title, options, image, sizeButton = 'lg', da
 
     switch (key) {
       case 'View':
+        setType('Product')
         dataModal(data)
         modalOpen()
         break;
