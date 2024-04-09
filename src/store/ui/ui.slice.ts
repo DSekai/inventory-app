@@ -1,5 +1,5 @@
 import { StateCreator } from 'zustand'
-import { ModalType } from '../../types/types'
+import { ModalType, Modals } from '../../types/types'
 // import { useDisclosure } from '@nextui-org/react';
 
 
@@ -7,11 +7,15 @@ import { ModalType } from '../../types/types'
 
 export const createUiSlice : StateCreator<ModalType> = (set) => ({
   isOpen: false,
+  type: null,
   onOpen() {
     set({isOpen: true})
   },
   onClose() {
     set({isOpen: false})
+  },
+  setType(type:Modals){
+    set({type})
   },
 
   data: null,
