@@ -305,6 +305,7 @@
 
 .formContent {
   display: grid;
+  gap: .3rem;
   /* flex-wrap: wrap; */
   /* gap: 1rem; */
   /* place-content: center; */
@@ -314,6 +315,10 @@
     /* gap: 1rem; */
     /* margin-bottom: 1rem; */
     /* justify-content: space-between; */
+  }
+  .number {
+    display: flex;
+    gap: .2rem;
   }
 }
 
