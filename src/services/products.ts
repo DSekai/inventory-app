@@ -19,6 +19,27 @@ const getProductApi = async (): Promise<ProductType[]> => {
 
 }
 
+const deleteProductApi = async(data: ProductType[], token: string) => {
+    try {
+        const response = await fetch('',{
+            method: 'DELETE',
+            headers: {
+                'ContentType': 'application/json',
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify(data)
+        })
+
+        if(!response.ok) throw new Error('Error in fetch Products')
+
+        return true
+    } catch (error) {
+        console.error(error)
+        throw error
+    }
+}
+
 export {
-    getProductApi
+    getProductApi,
+    deleteProductApi
 }
