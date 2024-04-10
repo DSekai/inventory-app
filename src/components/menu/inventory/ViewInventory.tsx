@@ -1,8 +1,6 @@
 // import { useRef, useState } from "react"
-import { ConfurationIcon } from "../../../assets/img/icons"
 import { ButtonOptionInventory } from "../../ui/menu/inventory/ButtonOptionInventory"
 // import { ButtonOption } from "../../ui/ButtonOption"
-import { DropDownComponent } from "../../ui/DropDownComponent"
 import { Table } from "../../ui/Table"
 import { productsColumn } from "../../../const.tsx"
 import { useProducts } from "../../../hooks/useProducts"
@@ -11,7 +9,7 @@ import { ModalProduct } from "../../ui/modals/ModalProduct.tsx"
 
 export const ViewInventory = () => {
 
-  const { products, deleteProducts } = useProducts()
+  const { products } = useProducts()
   // const {inventory} = useInventory()
 
   const customStyles = {
@@ -58,7 +56,7 @@ export const ViewInventory = () => {
       </div> */}
         <div className="inventory-items">
           {/* <DropDownComponent options={['1','2']} title="Actions"/> */}
-          <Table columns={productsColumn} customStyles={customStyles} data={products} highlightOnHover onDelete={deleteProducts} pagination paginationPerPage={10} pointerOnHover selectableRows title={' '}></Table>
+          <Table columns={productsColumn} customStyles={customStyles} data={products} highlightOnHover pagination paginationPerPage={10} pointerOnHover selectableRows title={' '}></Table>
         </div>
       </section>
       {
