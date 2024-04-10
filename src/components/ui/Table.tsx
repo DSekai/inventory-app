@@ -1,24 +1,21 @@
 import { useState } from "react";
 import DataTable, { TableProps } from "react-data-table-component";
 import { Button } from "@nextui-org/react";
-import { ProductType } from "../../types/types";
-import { useProducts } from "../../hooks/useProducts";
 
-// interface Props extends TableProps<ProductType>{
-//   onDelete: (data:ProductType[]) => Promise<void>
-// }
+interface Props<T> extends TableProps<T> {
+  onDelete: (data:T[]) => Promise<string>
+}
 
-export const Table = ({...props}: TableProps<ProductType>) => {
-  const { deleteProducts } = useProducts()
+export const Table = <T,>({ onDelete,...props}: Props<T>) => {
 
-  const [selectedRows, setSelectedRows] = useState<ProductType[] | []>([]);
+  const [selectedRows, setSelectedRows] = useState<T[] | []>([]);
   
-  const handleChange = (selected: { allSelected: boolean; selectedCount: number; selectedRows: ProductType[] }) => {
+  const handleChange = (selected: { allSelected: boolean; selectedCount: number; selectedRows: T[] }) => {
     setSelectedRows(selected.selectedRows)
   }
 
   const handleDelete = () => {
-    deleteProducts(selectedRows).then(data => window.alert(data))
+    onDelete(selectedRows).then(data => window.alert(data))
               .catch(() => console.error('error a cambiar'))
     
   }

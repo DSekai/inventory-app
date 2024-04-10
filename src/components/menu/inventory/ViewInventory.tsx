@@ -9,7 +9,7 @@ import { ModalProduct } from "../../ui/modals/ModalProduct.tsx"
 
 export const ViewInventory = () => {
 
-  const { products } = useProducts()
+  const { products, deleteProducts } = useProducts()
   // const {inventory} = useInventory()
 
   const customStyles = {
@@ -56,7 +56,7 @@ export const ViewInventory = () => {
       </div> */}
         <div className="inventory-items">
           {/* <DropDownComponent options={['1','2']} title="Actions"/> */}
-          <Table columns={productsColumn} customStyles={customStyles} data={products} highlightOnHover pagination paginationPerPage={10} pointerOnHover selectableRows title={' '}></Table>
+          <Table columns={productsColumn} customStyles={customStyles} data={products} highlightOnHover onDelete={deleteProducts} pagination paginationPerPage={10} pointerOnHover selectableRows title={' '}></Table>
         </div>
       </section>
       {
