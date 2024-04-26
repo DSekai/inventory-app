@@ -7,10 +7,10 @@ interface Props {
 export const ModalFooterLogin = ({onClose}: Props) => {
   return (
     <>
-      {/* <Button color="danger" onPress={onClose} variant="flat">
+      <Button color="danger" onPress={onClose} variant="flat">
         Close
-      </Button> */}
-      <Button color="primary" onPress={onClose}>
+      </Button>
+      <Button color="primary" >
         Sign in
       </Button>
     </>

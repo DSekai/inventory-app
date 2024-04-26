@@ -76,9 +76,15 @@ export interface LoginType {
 
 export interface UserType {
     id: string
-    first_name: string
-    last_name: string
     email: string
+    name: string
+    emailVerify: boolean
+    activate: boolean
+}
+
+export interface LoginResponseType {
+    user: UserType
+    token: string
 }
 
 //#region Modal
@@ -97,4 +103,12 @@ export interface ModalType {
     setData: (data: ModalProductType) => void
   }
 
+//#endregion
+
+//#region Errors
+export interface ErrorResponse {
+    message: string | string[]
+    error: string
+    statusCode: number
+  }
 //#endregion

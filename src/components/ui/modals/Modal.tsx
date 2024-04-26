@@ -1,12 +1,12 @@
-import { Modal as ModalUI, ModalContent, ModalHeader, ModalBody, ModalFooter, ModalProps } from "@nextui-org/react";
+import { Modal as ModalUI, ModalContent, ModalHeader, ModalBody, ModalProps } from "@nextui-org/react";
 
 interface Props extends ModalProps{
-  children: JSX.Element
-  childrenFooter: JSX.Element
+  children: React.ReactNode
+  // childrenFooter: JSX.Element
   title: string
 }
 
-export const Modal = ({ children, childrenFooter, title, ...props}: Props) => {
+export const Modal = ({ children, title, ...props}: Props) => {
 
   return (
     <ModalUI
@@ -19,9 +19,6 @@ export const Modal = ({ children, childrenFooter, title, ...props}: Props) => {
             <ModalBody>
               {children}
             </ModalBody>
-            <ModalFooter>
-              {childrenFooter}
-            </ModalFooter>
           </>
         }
       </ModalContent>

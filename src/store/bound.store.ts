@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 import { ModalType } from '../types/types'
 import { createUiSlice } from './ui/ui.slice'
-
+import { UserStateSliceType, createUserSlice } from './ui/user.slice'
 
 // import { createAuthSlice, type AuthSlice } from './ui/ui.slice'
 
@@ -10,13 +10,13 @@ import { createUiSlice } from './ui/ui.slice'
 //   ...createAuthSlice(...a)
 // }))
 
-// type Slices = AuthSlice & PostsSlice & UiSlice
+type Slices = ModalType & UserStateSliceType
 
-export const useBoundStore = create<ModalType>()(
+export const useBoundStore = create<Slices>()(
   devtools(
     (...a) => ({
       // ...createAuthSlice(...a),
-      // ...createPostSlice(...a),
+      ...createUserSlice(...a),
       ...createUiSlice(...a)
     })
   )
