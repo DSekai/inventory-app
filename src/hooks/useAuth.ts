@@ -1,4 +1,4 @@
-import { loginApi } from "../services/login"
+import { loginApi, loginAuthApi } from "../services/login"
 import { useBoundStore } from "../store/bound.store"
 import { LoginType } from "../types/types"
 
@@ -10,11 +10,22 @@ export const useAuth = () => {
     pending()
     await loginApi(payLoad)
           .then(res => {
-            localStorage.setItem('token', res.token),
+            localStorage.setItem('tokenAPI', res.token),
             saveLogin(res.user)
           })
           .catch(error => {throw error})
   }
 
-  return {login}
+  const authLogin = async () => {
+    await loginAuthApi()
+            .then(res => {
+              localStorage.setItem('tokenAPI', res.token),
+              saveLogin(res.user)
+            })
+            .catch(error => {throw error})
+  }
+  return {
+    login,
+    authLogin
+  }
 }

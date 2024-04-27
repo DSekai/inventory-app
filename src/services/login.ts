@@ -8,3 +8,10 @@ export const loginApi = (payLoad: LoginType) => inventoryAPI.post<LoginResponseT
   }).catch(error => {
     throw handleErrorExepcion(error)
   })
+
+export const loginAuthApi = () => inventoryAPI.get<LoginResponseType>('/auth/checkAuthStatus')
+  .then(response => {
+    return response.data
+  }).catch(error => {
+    throw handleErrorExepcion(error)
+  })
