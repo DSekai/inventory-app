@@ -1,11 +1,15 @@
-import { Button, Checkbox, Input, Link, ModalFooter } from "@nextui-org/react"
+import { Button, Input, Link, ModalFooter } from "@nextui-org/react"
 import { Modal } from "./Modal"
 import { useBoundStore } from "../../../store/bound.store"
 import { LockIcon, MailIcon } from "../../../assets/img/icons"
-import { FormEvent } from "react"
 import { useAuth } from "../../../hooks/useAuth"
+import { toast } from "sonner"
+import { SubmitHandler, useForm } from "react-hook-form"
+import { LoginType } from "../../../types/types"
+
 
 export const ModalLogin = () => {
+  const {register, handleSubmit} = useForm<LoginType>()
 
   const {login} = useAuth()
 
@@ -15,30 +19,28 @@ export const ModalLogin = () => {
   
   const isOpenType = isOpen && modalType === 'Login'
 
-  const handleSubmit = async (e:FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    // const data = Object.fromEntries(new window.FormData(e.target as HTMLFormElement));
-    const fields = new window.FormData(e.target as HTMLFormElement)
-    const email = (fields.get('email') ?? '')  as string
-    const password = (fields.get('password') ?? '') as string
-    // console.log(email,password);
-    // console.log(e.target.);
-    
-    login({email, password}) 
-    
+  const handleSubmitForm: SubmitHandler<LoginType> = async (data) => {
+    toast.promise(login(data) , {
+      loading: 'Loading...',
+      success: () => {
+        onClose()
+        return `You are logged`;
+      },
+      error: 'You email or password is not correct' 
+    }); 
   }
 
   return (
     <>
       <Modal backdrop="blur" hideCloseButton={true} isDismissable={false} isKeyboardDismissDisabled={true} isOpen={isOpenType} onClose={onClose} size="xs" title="Login" >
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(handleSubmitForm)}>
           <Input
             autoFocus
             endContent={
               <MailIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0"  />
                   }
             label="Email"
-            name="email"
+            {...register('email')}
             placeholder="Enter your email"
             variant="bordered"
           />
@@ -47,18 +49,21 @@ export const ModalLogin = () => {
               <LockIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
                   }
             label="Password"
-            name="password"
+            {...register('password')}
             placeholder="Enter your password"
             type="password" variant="bordered"
           />
-          <div className="flex py-2 px-1 justify-between">
-            <Checkbox
+          <div className="flex py-2 px-1 justify-end">
+            {/* <Checkbox
               classNames={{
                       label: "text-small",
                     }}
+              isSelected={isChecked}
+              name="check"
+              onChange={handleCheckboxChange}
             >
               Remember me
-            </Checkbox>
+            </Checkbox> */}
             <Link color="primary" href="#" size="sm">
               Forgot password?
             </Link>
