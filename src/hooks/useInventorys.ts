@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getInventoryApi } from "../services/inventorys";
+import { getInventoriesAPI } from "../services/inventorys";
 import { InventoryType } from "../types/types";
 
 export function useInventory () {
@@ -7,10 +7,8 @@ export function useInventory () {
     const [loading, setLoading] = useState(true)
 
     const getProjects = async () => {
-        await getInventoryApi()
+        await getInventoriesAPI()
             .then(res => setInventory(res))
-            // .then(res => console.log(res)
-            // )
             .catch(error => console.error(error))
             .finally(() => setLoading(false))
     }
@@ -18,7 +16,6 @@ export function useInventory () {
     useEffect(() => {
         setLoading(true)
         getProjects()
-            // .catch(err => console.error(err))
     },[])
 
     return {

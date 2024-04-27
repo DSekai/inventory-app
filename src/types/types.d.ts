@@ -2,9 +2,9 @@ import { Dispatch, ReactNode, RefObject, SetStateAction } from "react"
 
 //#region Inventorys
 
-export interface Inventorys {
+export interface InventoryType {
     id: string
-    title: string
+    name: string
     description?: string
 }
 //#endregion
@@ -42,11 +42,6 @@ export interface DropDownProps {
 //#endregion
 
 //#region MOCK-DATA
-export interface InventoryType {
-    title:        string;
-    id:           string;
-    description?: string;
-}
 
 export interface ProductType {
     product_id:      string;

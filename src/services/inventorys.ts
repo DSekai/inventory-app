@@ -1,24 +1,10 @@
+import { inventoryAPI } from "../api/inventory.api"
+import { handleErrorExepcion } from "../common/utils/handleErrors"
+import { InventoryType } from "../types/types"
 
-// const host = import.meta.env.VITE_API
-
-import { InventoryType } from "../types/types";
-
-const getInventoryApi = async (): Promise<InventoryType[]> => {
-    try {
-        // const productFound = await fetch(`${host}/products`)
-        const inventoryFound = await fetch('../../public/inventory.json')
-        
-        if(!inventoryFound.ok) throw new Error('Error in fetch products')
-        
-        return await inventoryFound.json() as InventoryType[]
-
-    } catch (error) {
-        console.error(error);
-        throw error
-    }
-
-}
-
-export {
-    getInventoryApi
-}
+export const getInventoriesAPI = () => inventoryAPI.get<InventoryType[]>('/inventories/all')
+  .then(response => {
+    return response.data
+  }).catch(error => {
+    throw handleErrorExepcion(error)
+  })
