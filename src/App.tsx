@@ -9,18 +9,18 @@ import { Toaster } from 'sonner'
 import { useAuth } from './hooks/useAuth'
 
 export const App = () => {
-  const token = window.localStorage.getItem('tokenAPI')
   const setType = useBoundStore(state => state.setType)
   const onOpen = useBoundStore(state => state.onOpen)
-  const {authLogin} = useAuth()
+  const {authLogin, userState} = useAuth()
 
-  useEffect(() => {
-    if(!token) {
-      setType('Login')
-      onOpen()
-    } else{
-      authLogin()
-    }
+  useEffect(() => {    
+    authLogin().then().catch(() => {
+      if(userState !== 'authorize') {
+        setType('Login')
+        onOpen()
+      }
+      
+    })
   }, [])
   return (
     <>
