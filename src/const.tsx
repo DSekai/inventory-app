@@ -1,25 +1,26 @@
 import { TableColumn } from "react-data-table-component";
-import { InventoryType, ProductType } from "./types/types";
+import { ProductType } from "./types/types";
 import { DropDownComponent } from "./components/ui/DropDownComponent";
 import { OptionsIcon } from "./assets/img/icons";
 
-export const inventorysColumn: TableColumn<InventoryType>[] = [
-    {
-        name: 'Title',
-        selector: row => row.title,
-        sortable: true
-    }
-]
+// export const inventorysColumn: TableColumn<InventoryType>[] = [
+//     {
+//         name: 'Title',
+//         selector: row => row.name,
+//         sortable: true
+//     }
+// ]
 
 export const productsColumn: TableColumn<ProductType>[] = [
     {
         name: 'ID',
-        selector: row => row.product_id ?? '',
-        sortable: true
+        selector: row => row.id ?? '',
+        sortable: true,
+        omit: true
     },
     {
         name: 'Product',
-        selector: row => row.product_name ?? '',
+        selector: row => row.name ?? '',
         sortable: true
     },
     {
@@ -34,18 +35,19 @@ export const productsColumn: TableColumn<ProductType>[] = [
     },
     {
         name: 'Expiration Date',
-        selector: row => row.expiration_date ?? '',
+        selector: row => row.date_expire ?? '',
         sortable: true
     },
     {
         name: 'Category',
-        selector: row => row.category ?? '',
+        selector: row => row.category.name ?? '',
+        
         sortable: true
     },
     {
-        name: 'Location',
-        selector: row => row.location ?? '',
-        sortable: true
+        name: 'CategoryID',
+        selector: row => row.category.id,
+        omit: true
     },
     {
         cell: row => <DropDownComponent data={row} image={<OptionsIcon />} options={[{ key: 'View' }, { key: 'Delete' }]} sizeButton="md" />,
