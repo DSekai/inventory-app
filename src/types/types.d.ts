@@ -44,13 +44,12 @@ export interface DropDownProps {
 //#region MOCK-DATA
 
 export interface ProductType {
-    product_id:      string;
-    product_name:    string;
+    id:      string;
+    name:    string;
     price:           number;
     quantity:        number;
-    expiration_date: string;
-    category:        CategoryType['category'];
-    location:        LocationType['location'];
+    date_expire: string;
+    category:        CategoryType;
 }
 
 export interface LocationType {
@@ -59,8 +58,8 @@ export interface LocationType {
 }
 
 export interface CategoryType {
-    category_id: string
-    category: string
+    id: string
+    name: string
 }
 //#endregion
 
