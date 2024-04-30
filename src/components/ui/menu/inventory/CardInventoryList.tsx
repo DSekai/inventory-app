@@ -1,25 +1,24 @@
 import { Link } from "react-router-dom"
-import { Inventorys } from "../../../../types/types"
 import { OptionsIcon } from "../../../../assets/img/icons"
 import { DropDownComponent } from "../../DropDownComponent"
+import { InventoryType } from "../../../../types/types"
 
 
-export const CardInventoryList = ({ id, title, description }: Inventorys) => {
+export const CardInventoryList = ({ id, name, description }: InventoryType) => {
 
     return (
-        <Link to={`/inventory/id=${id}`} >
-            <div className="cardInventoryList">
-                <header className="">
-                    <div className="">
-                        <DropDownComponent options={[{ key: 'Edit' }, { key: 'Delete' }]} image={<OptionsIcon />} sizeButton="md" />
-                    </div>
-                </header>
-                <div className="description">
-                    <h3>{title}</h3>
-                    <p>id: {id}</p>
-                    <p>{description}</p>
-                </div>
+      <Link to={`/inventory/${id}`} >
+        <div className="cardInventoryList">
+          <header className="">
+            <div className="">
+              <DropDownComponent data={null} image={<OptionsIcon />} options={[{ key: 'Edit' }, { key: 'Delete' }]} sizeButton="md" />
             </div>
-        </Link>
+          </header>
+          <div className="description">
+            <h2 className="title">{name}</h2>
+            <p>{description}</p>
+          </div>
+        </div>
+      </Link>
     )
 }
