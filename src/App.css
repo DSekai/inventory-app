@@ -124,10 +124,6 @@
     place-content: center;
     gap: 1rem;
 
-    >a {
-      /* z-index: 0; */
-    }
-
     .cardInventoryList {
       display: flex;
       flex-direction: column;
@@ -163,6 +159,16 @@
           
         }
         
+      }
+
+      .description {
+        /* background: red; */
+        display: flex;
+        flex-direction: column;
+        gap:1rem;
+        .title {
+          font-size: 1.5rem;
+        }
       }
       
       &:hover {
