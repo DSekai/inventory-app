@@ -6,6 +6,8 @@ export const useAuth = () => {
   const saveLogin = useBoundStore(state => state.setUserState )
   const pending = useBoundStore(state => state.setCheckedState)
 
+  const userState = useBoundStore(state => state.state)
+
   const login = async (payLoad: LoginType) => {
     pending()
     await loginApi(payLoad)
@@ -22,10 +24,13 @@ export const useAuth = () => {
               localStorage.setItem('tokenAPI', res.token),
               saveLogin(res.user)
             })
-            .catch(error => {throw error})
+            .catch(error => {
+              localStorage.removeItem('tokenAPI')
+              throw error})
   }
   return {
     login,
-    authLogin
+    authLogin,
+    userState
   }
 }

@@ -1,18 +1,15 @@
-import { useState, useEffect } from "react";
-import { deleteProductApi, getProductApi } from "../services/products";
-import { ProductType } from "../types/types";
+import { useState } from "react";
+import { deleteProductApi, getProductAPI } from "../services/products";
+import { InventoryType, ProductType } from "../types/types";
 
 export function useProducts () {
     const [products, setProducts] = useState<ProductType[] | [] >([])
-    const [loading, setLoading] = useState(true)
+    // const [loading, setLoading] = useState(true)
 
-    const getProduct = async () => {
-        await getProductApi()
+    const getProduct = async (inventoryID: InventoryType['id']) => {
+        await getProductAPI(inventoryID)
             .then(res => setProducts(res))
-            // .then(res => console.log(res)
-            // )
             .catch(error => console.error(error))
-            .finally(() => setLoading(false))
     }
 
     const deleteProducts = async (data: ProductType[]) => {
@@ -24,16 +21,17 @@ export function useProducts () {
         return 'Eliminated'
     }
 
-    useEffect(() => {
-        setLoading(true)
-        getProduct()
-            // .catch(err => console.error(err))
-    },[])
+    // useEffect(() => {
+    //     setLoading(true)
+    //     getProduct(inventoryID)
+    //         // .catch(err => console.error(err))
+    // },[])
 
     return {
         products,
-        loading,
-        deleteProducts
+        // loading,
+        deleteProducts,
+        getProduct
     }
     
 }

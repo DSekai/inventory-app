@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
-import { getInventoriesAPI } from "../services/inventorys";
-import { InventoryType } from "../types/types";
+import { getCategoryAPI } from "../services/category";
+import { CategoryType } from "../types/types";
 import { useAuth } from "./useAuth";
 
-export function useInventory () {
-    const [inventory, setInventory] = useState<InventoryType[] | [] >([])
+export function useCategory() {
+    const [category, setCategory] = useState<CategoryType[] | [] >([])
     const [loading, setLoading] = useState(true)
     const {userState} = useAuth()
+
     const getProjects = async () => {
-        await getInventoriesAPI()
-            .then(res => setInventory(res))
+        await getCategoryAPI()
+            .then(res => setCategory(res))
             .catch(error => console.error(error))
             .finally(() => setLoading(false))
     }
@@ -20,8 +21,9 @@ export function useInventory () {
     },[userState])
 
     return {
-        inventory,
-        loading
+      category,
+      loading,
+      getProjects
     }
     
 }
