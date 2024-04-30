@@ -5,13 +5,25 @@ import { Table } from "../../ui/Table"
 import { productsColumn } from "../../../const.tsx"
 import { useProducts } from "../../../hooks/useProducts"
 import { ModalProduct } from "../../ui/modals/ModalProduct.tsx"
-// import { useInventory } from "../../../hooks/useInventorys"
+import { useParams } from "react-router-dom"
+import { useEffect } from "react"
 
 export const ViewInventory = () => {
 
-  const { products, deleteProducts } = useProducts()
+  const { products, getProduct, deleteProducts } = useProducts()
   // const {inventory} = useInventory()
-
+  const {id} = useParams() 
+  
+  const searchProduct = async () => {
+    if(id)  await getProduct(id)
+    
+      
+  } 
+  
+  useEffect(() => {
+    searchProduct()
+  },[])
+  
   const customStyles = {
     headRow: {
       style: {

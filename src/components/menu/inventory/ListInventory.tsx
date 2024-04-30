@@ -6,12 +6,12 @@ export const ListInventory = () => {
   const {inventory} = useInventory()
   return (
     <>
-      <h2>Your Inventorys</h2>
+      <h2>Your Inventories</h2>
       <div className="inventoryList">
         {
           inventory.length !== 0 ? inventory.map(inventory => (
             <CardInventoryList description={inventory.description}
-              id={inventory.id} key={inventory.id} title={inventory.name}
+              id={inventory.id} key={inventory.id} name={inventory.name}
             />
           )) : Array(3).fill(null).map((_,index) => <CardSkeleton key={index}/>)
         }
