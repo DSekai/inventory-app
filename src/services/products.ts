@@ -1,25 +1,18 @@
 
 // const host = import.meta.env.VITE_API
 
+import { inventoryAPI } from "../api/inventory.api";
+import { handleErrorExepcion } from "../common/utils/handleErrors";
 import { ProductType } from "../types/types";
 
-const getProductApi = async (): Promise<ProductType[]> => {
-    try {
-        // const productFound = await fetch(`${host}/products`)
-        const productFound = await fetch('../../public/ProductsInventory.json')
-        
-        if(!productFound.ok) throw new Error('Error in fetch products')
-        
-        return await productFound.json() as ProductType[]
+export const getProductAPI = (inventoryID: string) => inventoryAPI.get<ProductType[]>(`/product/all/${inventoryID}`)
+  .then(response => {
+    return response.data
+  }).catch(error => {
+    throw handleErrorExepcion(error)
+  })
 
-    } catch (error) {
-        console.error(error);
-        throw error
-    }
-
-}
-
-const deleteProductApi = async(data: ProductType[], token: string) => {
+export const deleteProductApi = async(data: ProductType[], token: string) => {
     try {
         const response = await fetch('',{
             method: 'DELETE',
@@ -37,9 +30,4 @@ const deleteProductApi = async(data: ProductType[], token: string) => {
         console.error(error)
         throw error
     }
-}
-
-export {
-    getProductApi,
-    deleteProductApi
 }
