@@ -5,38 +5,35 @@ import { ListInventory } from "../components/menu/inventory/ListInventory"
 import { ViewInventory } from "../components/menu/inventory/ViewInventory"
 import { Inventory } from "../components/menu/inventory/Inventory"
 
-const id = '1'
-
 export const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <App/>,
+  {
+    path: '/',
+    element: <App />,
+    children: [
+      {
+        index: true,
+        element: <Menu />
+      },
+      {
+        path: '/inventory',
+        element: <Inventory />,
         children: [
-            {
-                index: true,
-                element: <Menu/>
-            },
-            {
-                path: '/inventory',
-                element: <Inventory/>,
-                children:[
-                    {
-                        index: true,
-                        element: <ListInventory/>
-                    },
-                    {
-                        path: `id=${id}`,
-                        element: <ViewInventory/>
-                    }
-                ]
-            },
-            {
-                path: '*',
-                element:
-                    <div className="">
-                        <h1>Page Not Found 404</h1>
-                    </div>
-            }
+          {
+            index: true,
+            element: <ListInventory />
+          },
+          {
+            path: `:id`,
+            element: <ViewInventory />
+          }
         ]
-    }
+      },
+      {
+        path: '*',
+        element:<div className="">
+          <h1>Page Not Found 404</h1>
+        </div>
+      }
+    ]
+  }
 ]) 
