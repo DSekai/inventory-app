@@ -80,11 +80,10 @@ export interface LoginResponseType {
     user: UserType
     token: string
 }
-
 //#region Modal
 
 type ModalProductType = ProductType | null
-type Modals = 'Product' | 'Login' | null
+type Modals = 'Product' | 'Login' | 'Inventory' | null
 
 export interface ModalType {
     isOpen: boolean
@@ -96,7 +95,6 @@ export interface ModalType {
     data: ModalProductType
     setData: (data: ModalProductType) => void
   }
-
 //#endregion
 
 //#region Errors

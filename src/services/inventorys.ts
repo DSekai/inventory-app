@@ -8,3 +8,7 @@ export const getInventoriesAPI = () => inventoryAPI.get<InventoryType[]>('/inven
   }).catch(error => {
     throw handleErrorExepcion(error)
   })
+
+export const postInventoriesAPI = (payLoad:InventoryType) => inventoryAPI.post('inventories', payLoad)
+  .then(response => (response.data))
+  .catch(error => {throw handleErrorExepcion(error)})
