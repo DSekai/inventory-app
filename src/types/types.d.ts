@@ -23,6 +23,7 @@ export interface ButtonOptionType {
     image?: ReactNode
     sizeButton?: ButtonSize
     data: ProductType | null
+    type: 'Inventory' | 'Product'
 }
 
 type TableType = 'Product' | 'Inventory'

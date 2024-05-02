@@ -35,10 +35,7 @@ export const ModalProduct = () => {
   const searchCategory = async() => getProjects()
 
   useEffect(() => {
-    searchCategory()
-    console.log(category);
-    console.log(data);
-    
+    searchCategory()    
   },[]) 
   
   return (

@@ -8,21 +8,16 @@ import {
 import { ButtonOptionType } from "../../types/types";
 import { Key } from "react";
 import { useBoundStore } from "../../store/bound.store";
-// import { ModalProduct } from "./modals/ModalProduct";
 
 export const DropDownComponent = ({ title, options, image, sizeButton = 'lg', data }: ButtonOptionType) => {
   const modalOpen = useBoundStore(state => state.onOpen)
   const dataModal = useBoundStore(state => state.setData)
   const setType = useBoundStore(state => state.setType)
 
-  // const { isOpen, onOpen, onClose } = useDisclosure();
-  // const [test, setTest] = useState(false)
-
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation(); // Detén la propagación solo para el DropDownComponent 
     e.preventDefault()
   }
-  // console.log(data);
   
   
   const handleActions = (key: Key) => {

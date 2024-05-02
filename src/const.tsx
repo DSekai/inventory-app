@@ -50,7 +50,7 @@ export const productsColumn: TableColumn<ProductType>[] = [
         omit: true
     },
     {
-        cell: row => <DropDownComponent data={row} image={<OptionsIcon />} options={[{ key: 'View' }, { key: 'Delete' }]} sizeButton="md" />,
+        cell: row => <DropDownComponent data={row} image={<OptionsIcon />} options={[{ key: 'View' }, { key: 'Delete' }]} sizeButton="md" type="Product" />,
         // allowOverflow: true,
         // button: true,
         // width: '50px'

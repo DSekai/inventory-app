@@ -1,20 +1,21 @@
-import { useInventory } from '../../../hooks/useInventorys';
+import { useInventories } from '../../../hooks/useInventories';
 import { ButtonAdd } from '../../ui/ButtonAdd';
 import { CardInventoryList } from '../../ui/menu/inventory/CardInventoryList';
 import { ModalInventory } from '../../ui/modals/ModalInventory';
 import { CardSkeleton } from '../../ui/Skeletons';
 
 export const ListInventory = () => {
-  const { inventory } = useInventory()
+  const { inventories } = useInventories()
   return (
     <>
       <h2>Your Inventories</h2>
       <div className="inventoryList">
         {
-          inventory.length !== 0 ? 
+          inventories.length !== 0 ? 
           (
             <>
-              {inventory.map((inventory) => (
+              <ButtonAdd />
+              {inventories.map((inventory) => (
                 <CardInventoryList
                   description={inventory.description}
                   id={inventory.id}
@@ -22,7 +23,6 @@ export const ListInventory = () => {
                   name={inventory.name}
                 />
               ))}
-              <ButtonAdd />
             </>
           ) : (
             Array(3)

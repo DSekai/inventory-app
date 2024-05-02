@@ -11,7 +11,7 @@ export const CardInventoryList = ({ id, name, description }: InventoryType) => {
         <div className="cardInventoryList">
           <header className="">
             <div className="">
-              <DropDownComponent data={null} image={<OptionsIcon />} options={[{ key: 'Edit' }, { key: 'Delete' }]} sizeButton="md" />
+              <DropDownComponent data={null} image={<OptionsIcon />} options={[{ key: 'Edit' }, { key: 'Delete' }]} sizeButton="md" type="Inventory" />
             </div>
           </header>
           <div className="description">
