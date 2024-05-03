@@ -17,7 +17,7 @@ const custom = {
 
 export const ModalProduct = () => {
 
-  const data = useBoundStore(state => state.data)
+  const data = useBoundStore(state => state.productData)
   const isOpen = useBoundStore(state => state.isOpen)
   const onClose = useBoundStore(state => state.onClose)
   const modalType = useBoundStore(state => state.type)
@@ -26,6 +26,8 @@ export const ModalProduct = () => {
 
 
   const isOpenType = isOpen && modalType === 'Product'
+
+  // if(data)
 
   // const dateFormated = data?.date_expire.split(/[-/]/).reverse().join("-")
   const dateFormated = data?.date_expire
