@@ -23,38 +23,57 @@ export const ModalInventory = () => {
 
   const {register, handleSubmit, formState: {errors}, } = useForm<InventoryType>({resolver: zodResolver(schema)}) 
   
-  const {postInventory} = useInventories()
+  const {postInventory, updateInventory} = useInventories()
 
   // const data = useBoundStore(state => state.data)
   const isOpen = useBoundStore(state => state.isOpen)
   const onClose = useBoundStore(state => state.onClose)
   const modalType = useBoundStore(state => state.type)
+  const dataInventory = useBoundStore(state => state.inventoryData)
+  const setData = useBoundStore(state => state.setInventoryData)
 
 
   const isOpenType = isOpen && modalType === 'Inventory'
   
   const handleSubmitForm: SubmitHandler<InventoryType> = (data) => {
-    toast.promise(postInventory(data), {
-      loading: 'Upload...',
-      success: () => {
-        onClose()
-        // window.location.reload()
-        return 'Inventory created'
-      },
-      error: 'Error'
-    })
+    if(!dataInventory){
+      toast.promise(postInventory(data), {
+        loading: 'Upload...',
+        success: () => {
+          onClose()
+          // window.location.reload()
+          return 'Inventory created'
+        },
+        error: 'Error'
+      }) 
+    }else {
+      data.id = dataInventory.id
+      toast.promise(updateInventory(data), {
+        loading: 'Updating...',
+        success: () => {
+          onClose()
+          return 'Inventory Updated'
+        },
+        error: 'Error'
+      })
+    }
     
+  }
+
+  const handleClose = () => {
+    setData(null)
+    onClose()
   }
   
   return (
-    <Modal isOpen={isOpenType} onClose={onClose} size='xs' title={'Product'}>
+    <Modal isOpen={isOpenType} onClose={handleClose} size='xs' title={'Product'}>
       <form onSubmit={handleSubmit(handleSubmitForm)}>
         <div className="formContent">
-          <Input classNames={custom} errorMessage={errors.name?.message} isInvalid={!!errors.name?.message} label={'Name'} {...register('name')} size="sm" type={'text'} variant="bordered"/>
-          <Input classNames={custom} errorMessage={errors.description?.message} isInvalid={!!errors.description?.message} label={'Description'} {...register('description')} size="sm" type={'text'} variant="bordered"/>
+          <Input classNames={custom} defaultValue={dataInventory?.name} errorMessage={errors.name?.message} isInvalid={!!errors.name?.message} label={'Name'} {...register('name')} size="sm" type={'text'} variant="bordered"/>
+          <Input classNames={custom} defaultValue={dataInventory?.description} errorMessage={errors.description?.message} isInvalid={!!errors.description?.message} label={'Description'} {...register('description')} size="sm" type={'text'} variant="bordered"/>
         </div>
         <ModalFooter>
-          <Button color="danger" onPress={onClose}>
+          <Button color="danger" onPress={handleClose}>
             Close
           </Button>
           <Button color="primary" type='submit'>
