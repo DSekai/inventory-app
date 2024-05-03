@@ -18,12 +18,12 @@ interface Option {
 type ButtonSize = 'lg' | 'sm' | 'md' 
 
 export interface ButtonOptionType {
-    title?: string
     options: Option[]
-    image?: ReactNode
-    sizeButton?: ButtonSize
-    data: ProductType | null
+    data: ProductType | InventoryType
     type: 'Inventory' | 'Product'
+    image?: ReactNode
+    title?: string
+    sizeButton?: ButtonSize
 }
 
 type TableType = 'Product' | 'Inventory'
@@ -83,7 +83,7 @@ export interface LoginResponseType {
 }
 //#region Modal
 
-type ModalProductType = ProductType | null
+// type ProductType = ProductType | null | InventoryType
 type Modals = 'Product' | 'Login' | 'Inventory' | null
 
 export interface ModalType {
@@ -92,11 +92,19 @@ export interface ModalType {
     onOpen: () => void
     onClose: () => void
     setType: (modals:Modals) => void
+}
 
-    data: ModalProductType
-    setData: (data: ModalProductType) => void
-  }
+export interface ProductModalType {
+    productData: ProductType | null
+    setProductData: (data: ProductType) => void
+}
+
+export interface InventoryModalType {
+    inventoryData: InventoryType | null
+    setInventoryData: (data: InventoryType) => void
+}
 //#endregion
+
 
 //#region Errors
 export interface ErrorResponse {
