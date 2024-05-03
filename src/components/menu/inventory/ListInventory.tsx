@@ -17,10 +17,8 @@ export const ListInventory = () => {
               <ButtonAdd />
               {inventories.map((inventory) => (
                 <CardInventoryList
-                  description={inventory.description}
-                  id={inventory.id}
+                  inventory={inventory}
                   key={inventory.id}
-                  name={inventory.name}
                 />
               ))}
             </>
