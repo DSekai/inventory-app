@@ -17,10 +17,4 @@ export const createUiSlice : StateCreator<ModalType> = (set) => ({
   setType(type:Modals){
     set({type})
   },
-
-  data: null,
-  setData(data) {
-    set({data})
-  },
-
 })
