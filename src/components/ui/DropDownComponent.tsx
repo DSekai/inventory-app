@@ -5,14 +5,17 @@ import {
   DropdownItem,
   Button,
 } from "@nextui-org/react";
-import { ButtonOptionType } from "../../types/types";
+import { ButtonOptionType, InventoryType, ProductType } from "../../types/types";
 import { Key } from "react";
 import { useBoundStore } from "../../store/bound.store";
+import { useInventories } from "../../hooks/useInventories";
 
-export const DropDownComponent = ({ title, options, image, sizeButton = 'lg', data }: ButtonOptionType) => {
+export const DropDownComponent = ({ title, options, image, sizeButton = 'lg', data, type }: ButtonOptionType) => {
   const modalOpen = useBoundStore(state => state.onOpen)
-  const dataModal = useBoundStore(state => state.setData)
+  const dataProductModal = useBoundStore(state => state.setProductData)
+  const dataInventoryModal = useBoundStore(state => state.setInventoryData)
   const setType = useBoundStore(state => state.setType)
+  const {deleteInventory} = useInventories()
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation(); // Detén la propagación solo para el DropDownComponent 
@@ -23,16 +26,27 @@ export const DropDownComponent = ({ title, options, image, sizeButton = 'lg', da
   const handleActions = (key: Key) => {
 
     switch (key) {
-      case 'View':
-        setType('Product')
-        dataModal(data)
-        modalOpen()
-        break;
+      // case 'View':
+      //   setType('Product')
+      //   dataProductModal(data as ProductType)
+      //   modalOpen()
+      //   break;
       case 'Delete':
-        window.confirm(`Are you sure you want to ${key}`)
+        if (type === 'Inventory' && window.confirm(`Are you sure you want to delete ${data?.name}?`)) {
+          if(data) deleteInventory(data?.id);
+      }
         break
-      case 'Edit':
-        window.confirm(`Are you sure you want to ${key}`)
+      case 'View':
+        if(type === 'Product') {
+          setType('Product')
+          dataProductModal(data as ProductType)
+          modalOpen()
+        }
+        if(type === 'Inventory'){
+          setType("Inventory")
+          dataInventoryModal(data as InventoryType)
+          modalOpen()
+        }
         break
       default:
         break;
